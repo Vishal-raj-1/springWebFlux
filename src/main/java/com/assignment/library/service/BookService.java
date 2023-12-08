@@ -40,7 +40,7 @@ public class BookService {
                         .flatMapMany(this::getBooks));
     }
     private Flux<BookDTO> getBooks(AuthorDTO authorDTO){
-        if(authorDTO != null && authorDTO.getId()!= null){
+        if(authorDTO != null && authorDTO.getId() != null){
             return bookRepository.findByAuthorIds(authorDTO.getId());
         }
         else{
