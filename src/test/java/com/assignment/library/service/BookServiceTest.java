@@ -28,9 +28,9 @@ class BookServiceTest {
 
     @Test
     void getAllBooks() {
-        Flux<Book> books = Flux.just(
-                new Book("1", "Science Fiction", "1", 5),
-                new Book("2", "Fantasy", "2", 8)
+        Flux<BookDTO> books = Flux.just(
+                new BookDTO("1", "Science Fiction", "1", 5),
+                new BookDTO("2", "Fantasy", "2", 8)
         );
 
         bookRepository.saveAll(books).blockLast();
@@ -44,9 +44,9 @@ class BookServiceTest {
 
     @Test
     void getBooksByGenre() {
-        Flux<Book> books = Flux.just(
-                new Book("1", "Science Fiction", "1", 5),
-                new Book("2", "Science Fiction", "2", 8)
+        Flux<BookDTO> books = Flux.just(
+                new BookDTO("1", "Science Fiction", "1", 5),
+                new BookDTO("2", "Science Fiction", "2", 8)
         );
 
         bookRepository.saveAll(books).blockLast();
@@ -60,10 +60,10 @@ class BookServiceTest {
 
     @Test
     void getBooksByGenreAndCopiesAvailable() {
-        Flux<Book> books = Flux.just(
-                new Book("1", "Science Fiction", "1", 5),
-                new Book("2", "Fantasy", "2", 8),
-                new Book("3", "Science Fiction", "3", 10)
+        Flux<BookDTO> books = Flux.just(
+                new BookDTO("1", "Science Fiction", "1", 5),
+                new BookDTO("2", "Fantasy", "1", 8),
+                new BookDTO("3", "Mystery", "2", 10)
         );
 
         bookRepository.saveAll(books).blockLast();
@@ -77,15 +77,15 @@ class BookServiceTest {
 
     @Test
     void getBooksByAuthorsName() {
-        Author author1 = new Author("1", "Author1", null, null);
-        Author author2 = new Author("2", "Author2", null, null);
+        Author author1 = new AuthorDTO("1", "Author1", null, null);
+        Author author2 = new AuthorDTO("2", "Author2", null, null);
 
         authorRepository.saveAll(Flux.just(author1, author2)).blockLast();
 
-        Flux<Book> books = Flux.just(
-                new Book("1", "Science Fiction", "1", 5),
-                new Book("2", "Fantasy", "1", 8),
-                new Book("3", "Mystery", "2", 10)
+        Flux<BookDTO> books = Flux.just(
+                new BookDTO("1", "Science Fiction", "1", 5),
+                new BookDTO("2", "Fantasy", "1", 8),
+                new BookDTO("3", "Mystery", "2", 10)
         );
 
         bookRepository.saveAll(books).blockLast();

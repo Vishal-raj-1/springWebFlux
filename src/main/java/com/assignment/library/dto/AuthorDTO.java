@@ -11,8 +11,6 @@ import org.springframework.data.annotation.Id;
 
 
 import java.util.List;
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthorDTO {
@@ -22,4 +20,28 @@ public class AuthorDTO {
     private String name;
     @NotNull(message = "Author.address must be present")
     private Address address;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }
